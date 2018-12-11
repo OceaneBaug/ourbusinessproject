@@ -1,4 +1,4 @@
-package lpmms.persistence.ourbusinessproject;
+package ourbusinessproject;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
