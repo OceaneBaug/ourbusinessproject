@@ -5,6 +5,7 @@ import javax.validation.constraints.Size;
 
 public class Project {
 	@NotNull @Size(min=2)
+	// @NotBlank = combine les 2
 	private String title;
 	private String description;
 	
