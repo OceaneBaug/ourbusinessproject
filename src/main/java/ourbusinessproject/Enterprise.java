@@ -19,6 +19,10 @@ public class Enterprise {
 	@NotBlank
 	private String name;
 	
+	@Column(name = "contact_name")
+	@NotBlank
+	private String contactName;
+	
 	@Column(name = "description")
 	@NotNull @Size(min=10)
 	private String description;
@@ -27,22 +31,50 @@ public class Enterprise {
 	@Email @NotBlank
 	private String email;
 	
+	
+	
 	public Long getId() {return this.id ; }
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+		
+	}
+	
+	public String getContactName() {
+		return this.contactName;
+	}
 
-	public void setName(String nom) {
-		this.name = nom;
+	public void setContactName(String contact_name) {
+		this.contactName = contact_name;
 		
 	}
 
+	public String getDescription() {
+		return this.description;
+	}
+	
 	public void setDescription(String desc) {
 		this.description = desc;
 		
 	}
 
+	public String getContactEmail() {
+		return this.email;
+	}
+	
 	public void setContactEmail(String mail) {
 		this.email = mail;
 		
-	}
+	}	
+
+	
+
+	
+
 
 
 
