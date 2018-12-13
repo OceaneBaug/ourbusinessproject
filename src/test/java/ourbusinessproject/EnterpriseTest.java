@@ -3,11 +3,14 @@ package ourbusinessproject;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
 import static org.junit.Assert.*;
+
+import java.util.Set;
 
 public class EnterpriseTest {
 
@@ -22,7 +25,7 @@ public class EnterpriseTest {
         enterprise = new Enterprise();
         enterprise.setName("Company & Co");
         enterprise.setDescription("Comp description");
-        enterprise.setName("Paul Durand");
+        enterprise.setContactName("Paul Durand");
         enterprise.setContactEmail("paul@compco.com");
     }
 
@@ -31,6 +34,7 @@ public class EnterpriseTest {
         // given a valid enterprise
 
         // the given enterprise is valid
+    	Set<ConstraintViolation<Enterprise>> res =  validator.validate(enterprise);
         assertTrue("Expected no constraint violation", validator.validate(enterprise).isEmpty());
     }
 

@@ -2,6 +2,7 @@ package ourbusinessproject;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
@@ -23,10 +24,12 @@ public class EnterpriseProjectService {
 
 	public void save(Project project) {
 		entityManager.persist(project);		
+		entityManager.flush();
 	}
 
 	public void save(Enterprise enterprise) {
 		entityManager.persist(enterprise);
+		entityManager.flush();
 		
 	}
 
