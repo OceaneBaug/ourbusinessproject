@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -24,6 +25,11 @@ public class Project {
 	@Column(name = "description")
 	private String description;
 	
+
+	@Column(name = "enterprise")
+	@NotNull
+	private Enterprise enterprise;
+	
 	public Long getId() {return this.id ; }
 	
 	public String getTitle() {
@@ -40,6 +46,11 @@ public class Project {
 	
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public void setEnterprise(Enterprise enterprise) {
+		this.enterprise = enterprise;
+		
 	}
 	
 	
