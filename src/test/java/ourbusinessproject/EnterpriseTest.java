@@ -3,14 +3,13 @@ package ourbusinessproject;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
-
-import java.util.Set;
 
 public class EnterpriseTest {
 
@@ -34,8 +33,11 @@ public class EnterpriseTest {
         // given a valid enterprise
 
         // the given enterprise is valid
-    	Set<ConstraintViolation<Enterprise>> res =  validator.validate(enterprise);
         assertTrue("Expected no constraint violation", validator.validate(enterprise).isEmpty());
+
+        // and the enterprise has no attached projects
+        assertThat(enterprise.getProjects(), is(nullValue()));
+
     }
 
     @Test
@@ -70,13 +72,13 @@ public class EnterpriseTest {
     public void testEnterpriseContactNameValidation() {
 
         // when the contact name is empty
-        enterprise.setName("");
+        enterprise.setContactName("");
 
         // then: enterprise is no more valid
         assertFalse("Expected no constraint violation", validator.validate(enterprise).isEmpty());
 
         // when the contact name is null
-        enterprise.setName(null);
+        enterprise.setContactName(null);
 
         // then: enterprise is no more valid
         assertFalse("Expected no constraint violation", validator.validate(enterprise).isEmpty());

@@ -1,10 +1,13 @@
 package ourbusinessproject;
 
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -32,6 +35,10 @@ public class Enterprise {
 	@Column(name = "email")
 	@Email @NotBlank
 	private String email;
+	
+	@Column(name = "projetcs")
+	@OneToMany(mappedBy="entreprise")
+	private Collection<Project> lesProjets;
 	
 	
 	
@@ -71,6 +78,11 @@ public class Enterprise {
 	public void setContactEmail(String mail) {
 		this.email = mail;
 		
+	}
+
+	public Collection<Project> getProjects() {
+
+		return this.lesProjets;
 	}	
 
 	
