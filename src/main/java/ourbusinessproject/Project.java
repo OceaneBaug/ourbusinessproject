@@ -30,6 +30,16 @@ public class Project {
 	@ManyToOne
 	private Enterprise enterprise;
 	
+	public Project(String string, String string2, Enterprise enterprise2) {
+		this.title = string;
+		this.description = string2;
+		this.enterprise = enterprise2;
+	}
+
+	public Project() {
+		super();
+	}
+
 	public Long getId() {return this.id ; }
 	
 	public String getTitle() {
