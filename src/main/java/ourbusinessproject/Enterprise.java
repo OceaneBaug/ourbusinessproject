@@ -38,7 +38,7 @@ public class Enterprise {
 	private String email;
 	
 	@OneToMany(mappedBy="enterprise")
-	private Collection<Project> projects = new HashSet<>();
+	private Collection<Project> projects;
 	
 	
 	
@@ -89,6 +89,9 @@ public class Enterprise {
 	}
 	
 	public void addProject(Project proj) {
+		if(this.projects == null) {
+			this.projects = new HashSet<>();
+		}
 		this.projects.add(proj);
 	}
 

@@ -50,8 +50,10 @@ public class Project {
 
 	public void setEnterprise(Enterprise enterprise) {
 		this.enterprise = enterprise;
-		this.enterprise.addProject(this);
-		
+		// if enterprise exists then we add the project in its collection
+		if(this.enterprise != null) {
+			this.enterprise.addProject(this);
+		}
 	}
 
 	public Enterprise getEnterprise() {
