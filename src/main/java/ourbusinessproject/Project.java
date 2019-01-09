@@ -26,8 +26,6 @@ public class Project {
 	@Column(name = "description")
 	private String description;
 	
-
-	@Column(name = "enterprise")
 	@NotNull
 	@ManyToOne
 	private Enterprise enterprise;
@@ -52,7 +50,12 @@ public class Project {
 
 	public void setEnterprise(Enterprise enterprise) {
 		this.enterprise = enterprise;
+		this.enterprise.addProject(this);
 		
+	}
+
+	public Enterprise getEnterprise() {
+		return this.enterprise;
 	}
 	
 	

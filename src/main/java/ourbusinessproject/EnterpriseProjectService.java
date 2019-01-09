@@ -23,6 +23,9 @@ public class EnterpriseProjectService {
 	}
 
 	public void save(Project project) {
+		// sauvegarde l'entreprise du projet
+		save(project.getEnterprise());
+		// sauvegarde le projet
 		entityManager.persist(project);		
 		entityManager.flush();
 	}

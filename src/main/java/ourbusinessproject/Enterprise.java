@@ -2,6 +2,7 @@ package ourbusinessproject;
 
 
 import java.util.Collection;
+import java.util.HashSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,9 +37,8 @@ public class Enterprise {
 	@Email @NotBlank
 	private String email;
 	
-	@Column(name = "projetcs")
-	@OneToMany(mappedBy="entreprise")
-	private Collection<Project> lesProjets;
+	@OneToMany(mappedBy="enterprise")
+	private Collection<Project> projects = new HashSet<>();
 	
 	
 	
@@ -81,15 +81,16 @@ public class Enterprise {
 	}
 
 	public Collection<Project> getProjects() {
+		return projects;
+	}
 
-		return this.lesProjets;
-	}	
-
+	public void setProjects(Collection<Project> projects) {
+		this.projects = projects;
+	}
 	
-
-	
-
-
+	public void addProject(Project proj) {
+		this.projects.add(proj);
+	}
 
 
 }
