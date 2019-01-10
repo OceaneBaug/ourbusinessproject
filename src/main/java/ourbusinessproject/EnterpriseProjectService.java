@@ -45,7 +45,7 @@ public class EnterpriseProjectService {
     }
 
     public List<Project> findAllProjects() {
-        TypedQuery<Project> query = entityManager.createQuery("select p from Project p order by p.title", Project.class);
+        TypedQuery<Project> query = entityManager.createQuery("select p from Project p order by p.title", Project.class); // ne fonctionne pas sans order by
         return query.getResultList();
     }
 }
