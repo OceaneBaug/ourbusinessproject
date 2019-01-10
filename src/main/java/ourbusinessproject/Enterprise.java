@@ -1,99 +1,85 @@
 package ourbusinessproject;
 
 
-import java.util.Collection;
-import java.util.HashSet;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Enterprise {
-	
-	@Id
-	@GeneratedValue
-	private Long id;
-	
-	@Column(name = "name")
-	@NotBlank
-	private String name;
-	
-	@Column(name = "contact_name")
-	@NotBlank
-	private String contactName;
-	
-	@Column(name = "description")
-	@Size(min=10)
-	private String description;
-	
-	@Column(name = "email")
-	@Email @NotBlank
-	private String email;
-	
-	@OneToMany(mappedBy="enterprise")
-	private Collection<Project> projects;
-	
-	
-	
-	public Long getId() {return this.id ; }
-	
-	public String getName() {
-		return this.name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-		
-	}
-	
-	public String getContactName() {
-		return this.contactName;
-	}
 
-	public void setContactName(String contact_name) {
-		this.contactName = contact_name;
-		
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-	public String getDescription() {
-		return this.description;
-	}
-	
-	public void setDescription(String desc) {
-		this.description = desc;
-		
-	}
+    @NotNull @Size(min = 1)
+    private String name;
 
-	public String getContactEmail() {
-		return this.email;
-	}
-	
-	public void setContactEmail(String mail) {
-		this.email = mail;
-		
-	}
+    @Size(min = 10)
+    private String description;
 
-	public Collection<Project> getProjects() {
-		return projects;
-	}
+    @NotNull @Size(min=2)
+    private String contactName;
 
-	public void setProjects(Collection<Project> projects) {
-		this.projects = projects;
-	}
-	
-	public void addProject(Project proj) {
-		if(this.projects == null) {
-			this.projects = new HashSet<>();
-		}
-		this.projects.add(proj);
-	}
+    @NotNull @Size(min=2)
+    @Email
+    private String contactEmail;
 
+    @OneToMany(mappedBy = "enterprise")
+    private List<Project> projects ;
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getContactName() {
+        return contactName;
+    }
+
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
+    }
+
+    public void setContactEmail(String contactEmail) {
+        this.contactEmail = contactEmail;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
+
+    public void addProject(Project project) {
+        if (projects == null) {
+            projects = new ArrayList<>();
+        }
+        projects.add(project);
+    }
 }
