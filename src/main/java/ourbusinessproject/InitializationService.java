@@ -41,7 +41,7 @@ public class InitializationService {
     }
 
     private void initAndSaveProject2E1() {
-        project2E1 = new Project("p2e1","p2 e1 description", enterprise1);
+        project2E1 = new Project(null /*"p2e1"*/ ,"p2 e1 description", enterprise1);
         enterpriseProjectService.save(project2E1);
     }
 
